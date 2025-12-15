@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --warm-sand: #FBF4E6;
+    --sunlit-amber: #D98C4A;
+    --lavender-mist: #B7A5D8;
+    --teal-softwave: #6BA4A6;
+    --text-main: #4E3620;
+    --text-muted: #7A6144;
+    --white: #FFFFFF;
+    --success: #6BA4A6;
+    --error: #D98C4A;
+  }
+
+  body {
+    @apply bg-warm-sand text-text-main;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-main font-bold;
+  }
+
+  p {
+    @apply text-text-muted;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-sunlit-amber text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-300 hover:scale-105 shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-sunlit-amber text-sunlit-amber px-6 py-3 rounded-lg font-semibold hover:bg-sunlit-amber hover:text-white transition-all duration-300;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+}
