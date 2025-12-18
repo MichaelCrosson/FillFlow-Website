@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
