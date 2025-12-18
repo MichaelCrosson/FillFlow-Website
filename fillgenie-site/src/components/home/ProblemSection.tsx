@@ -8,17 +8,14 @@ export const ProblemSection: React.FC = () => {
     {
       icon: ArrowPathIcon,
       title: 'Re-entering the same information is exhausting',
-      description: 'Job applications, expense reports, onboarding forms—you\'ve typed your information a hundred times.',
     },
     {
       icon: ClockIcon,
       title: 'Admin work slows down real work',
-      description: 'Teams waste hours on forms that could be automated. Time better spent on high-value tasks.',
     },
     {
       icon: ExclamationTriangleIcon,
       title: 'Manual entry creates errors',
-      description: 'Typos, wrong dates, missing fields—mistakes that lead to delays and rework.',
     },
   ];
 
@@ -32,18 +29,15 @@ export const ProblemSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {problems.map((problem, index) => (
             <div key={index}>
-              <Card className="h-full text-center">
-                <div className="flex justify-center mb-4">
-                  <div className="bg-sunlit-amber bg-opacity-10 p-4 rounded-full">
-                    <problem.icon className="w-8 h-8 text-sunlit-amber" />
+              <Card className="h-full">
+                <div className="flex items-center gap-4">
+                  <div className="bg-sunlit-amber bg-opacity-10 p-3 rounded-full flex-shrink-0">
+                    <problem.icon className="w-6 h-6 text-sunlit-amber" />
                   </div>
+                  <h3 className="text-lg font-bold text-text-main">
+                    {problem.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-text-main mb-3">
-                  {problem.title}
-                </h3>
-                <p className="text-text-muted">
-                  {problem.description}
-                </p>
               </Card>
             </div>
           ))}
