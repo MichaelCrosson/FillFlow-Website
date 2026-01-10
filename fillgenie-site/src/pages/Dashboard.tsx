@@ -2,10 +2,37 @@ import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Section } from '../components/common/Section';
 import { Card } from '../components/common/Card';
-import { DocumentIcon, ChartBarIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { DocumentIcon, ChartBarIcon, Cog6ToothIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 
 export const Dashboard: React.FC = () => {
-  const { user } = useAuth();
+  const { user, logout, logoutAll } = useAuth();
+  const [isLoggingOut, setIsLoggingOut] = React.useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await logout();
+      // Navigation will happen automatically via AuthContext
+    } catch (error) {
+      console.error('Logout failed:', error);
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
+
+  const handleLogoutAll = async () => {
+    if (window.confirm('This will log you out from all devices. Are you sure?')) {
+      setIsLoggingOut(true);
+      try {
+        await logoutAll();
+        // Navigation will happen automatically via AuthContext
+      } catch (error) {
+        console.error('Logout all failed:', error);
+      } finally {
+        setIsLoggingOut(false);
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-warm-sand">
@@ -33,18 +60,51 @@ export const Dashboard: React.FC = () => {
                   <span className="font-semibold text-text-main">User ID:</span>
                   <span className="ml-2 text-text-muted font-mono text-xs">{user?.id}</span>
                 </div>
+                <div>
+                  <span className="font-semibold text-text-main">Name:</span>
+                  <span className="ml-2 text-text-muted">{user?.name || user?.full_name || 'Not provided'}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-text-main">Status:</span>
+                  <span className="ml-2 text-text-muted">{user?.is_active ? '✓ Active' : 'Inactive'}</span>
+                </div>
                 {user?.s3_bucket_prefix && (
-                  <div>
+                  <div className="md:col-span-2">
                     <span className="font-semibold text-text-main">S3 Prefix:</span>
                     <span className="ml-2 text-text-muted font-mono text-xs">{user.s3_bucket_prefix}</span>
                   </div>
                 )}
                 {user?.pinecone_namespace && (
-                  <div>
+                  <div className="md:col-span-2">
                     <span className="font-semibold text-text-main">Pinecone Namespace:</span>
                     <span className="ml-2 text-text-muted font-mono text-xs">{user.pinecone_namespace}</span>
                   </div>
                 )}
+              </div>
+              
+              {/* Logout Buttons */}
+              <div className="mt-6 pt-6 border-t border-text-muted border-opacity-20">
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    onClick={handleLogout}
+                    disabled={isLoggingOut}
+                    className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ArrowRightOnRectangleIcon className="w-5 h-5" />
+                    {isLoggingOut ? 'Logging out...' : 'Logout'}
+                  </button>
+                  <button
+                    onClick={handleLogoutAll}
+                    disabled={isLoggingOut}
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ArrowRightOnRectangleIcon className="w-5 h-5" />
+                    {isLoggingOut ? 'Logging out...' : 'Logout All Devices'}
+                  </button>
+                </div>
+                <p className="mt-2 text-xs text-text-muted">
+                  "Logout All Devices" will end all your active sessions on all platforms.
+                </p>
               </div>
             </div>
           </Card>

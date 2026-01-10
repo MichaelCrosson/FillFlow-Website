@@ -74,11 +74,11 @@ export const Login: React.FC = () => {
               </div>
             )}
 
-            {/* Full Name (Register Only) */}
+            {/* Name (Register Only) */}
             {!isLogin && (
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-text-main mb-2">
-                  Full Name (Optional)
+                  Name (Optional)
                 </label>
                 <input
                   id="fullName"
