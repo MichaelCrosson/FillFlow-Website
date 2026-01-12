@@ -90,14 +90,18 @@ export const BlogPost: React.FC = () => {
               }`}>
                 {post.audience === 'executive' ? 'Executive' : 'Technical'}
               </span>
-              <span className="text-text-muted text-sm">{post.reading_time}</span>
+              <span className="text-text-muted text-sm">{post.reading_time} min read</span>
               <span className="text-text-muted text-sm">•</span>
-              <span className="text-text-muted text-sm">{new Date(post.date).toLocaleDateString()}</span>
+              <span className="text-text-muted text-sm">
+                {post.date ? new Date(post.date).toLocaleDateString() : 
+                 post.created_at ? new Date(post.created_at).toLocaleDateString() : 
+                 'Recent'}
+              </span>
             </div>
             <h1 className="text-4xl font-bold text-text-main mb-4">{post.title}</h1>
-            <p className="text-xl text-text-muted">{post.excerpt}</p>
+            <p className="text-xl text-text-muted">{post.excerpt || ''}</p>
             <div className="flex flex-wrap gap-2 mt-4">
-              {post.tags.map((tag) => (
+              {(post.tags || post.keywords || []).map((tag) => (
                 <span key={tag} className="px-2 py-1 bg-warm-sand rounded text-sm text-text-muted">
                   {tag}
                 </span>
