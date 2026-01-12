@@ -65,7 +65,7 @@ export const BlogPost: React.FC = () => {
     if (!contentRef.current || !htmlContent) return;
 
     const codeBlocks = contentRef.current.querySelectorAll('pre');
-    codeBlocks.forEach((pre, index) => {
+    codeBlocks.forEach((pre) => {
       // Skip if button already exists
       if (pre.querySelector('.copy-button')) return;
 
