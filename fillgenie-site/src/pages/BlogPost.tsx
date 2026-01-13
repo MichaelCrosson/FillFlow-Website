@@ -148,8 +148,8 @@ export const BlogPost: React.FC = () => {
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-text-main mb-3">{post.title}</h1>
-            <p className="text-xl text-text-muted">{post.excerpt || ''}</p>
-            <div className="flex flex-wrap gap-2 mt-4">
+            <p className="text-lg sm:text-xl text-text-muted">{post.excerpt || ''}</p>
+            <div className="flex flex-wrap gap-2 mt-3">
               {(post.tags || post.keywords || []).map((tag) => (
                 <span key={tag} className="px-2 py-1 bg-warm-sand rounded text-sm text-text-muted">
                   {tag}
