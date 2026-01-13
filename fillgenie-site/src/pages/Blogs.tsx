@@ -48,9 +48,9 @@ export const Blogs: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <Section background="warm-sand" className="py-6 sm:py-8">
+      <Section background="warm-sand" className="py-4 sm:py-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-text-main mb-3">
+          <h1 className="text-4xl sm:text-5xl font-bold text-text-main mb-2">
             FillFlow Blog
           </h1>
           <p className="text-xl text-text-muted mb-0">
@@ -60,9 +60,9 @@ export const Blogs: React.FC = () => {
       </Section>
 
       {/* Filter Section */}
-      <Section background="white" className="py-4">
+      <Section background="white" className="py-3">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
             <div className="flex items-center gap-2">
               <FunnelIcon className="w-5 h-5 text-text-muted" />
               <span className="text-text-muted font-medium">Filter by:</span>

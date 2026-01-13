@@ -159,10 +159,13 @@ export const BlogPost: React.FC = () => {
           </header>
 
           {/* Article Content */}
-          <div 
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-warm-sand">
+            <div 
+              ref={contentRef}
+              className="prose prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
+          </div>
         </article>
       </Section>
     </div>
