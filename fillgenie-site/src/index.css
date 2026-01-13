@@ -209,7 +209,12 @@
   }
 
   .prose blockquote {
-    @apply border-l-4 border-sunlit-amber pl-4 italic text-text-muted my-4;
+    border-left: 4px solid var(--sunlit-amber) !important;
+    padding-left: 1rem !important;
+    font-style: italic !important;
+    color: var(--text-muted) !important;
+    margin: 1rem 0 !important;
+    background: transparent !important;
   }
 
   .prose img {
