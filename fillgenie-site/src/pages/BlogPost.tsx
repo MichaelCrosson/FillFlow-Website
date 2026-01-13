@@ -118,7 +118,7 @@ export const BlogPost: React.FC = () => {
   return (
     <div>
       {/* Back Button */}
-      <Section background="warm-sand" className="py-3">
+      <Section background="warm-sand" className="py-2">
         <div className="max-w-4xl mx-auto">
           <Link to="/blog" className="inline-flex items-center gap-2 text-sunlit-amber hover:text-text-main transition-colors">
             <ArrowLeftIcon className="w-5 h-5" />
@@ -128,10 +128,10 @@ export const BlogPost: React.FC = () => {
       </Section>
 
       {/* Article Header */}
-      <Section background="white" className="py-8">
+      <Section background="white" className="py-4">
         <article className="max-w-4xl mx-auto">
-          <header className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
+          <header className="mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                 post.audience === 'executive' 
                   ? 'bg-lavender-mist bg-opacity-20 text-lavender-mist' 
@@ -147,7 +147,7 @@ export const BlogPost: React.FC = () => {
                  'Recent'}
               </span>
             </div>
-            <h1 className="text-4xl font-bold text-text-main mb-4">{post.title}</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-text-main mb-3">{post.title}</h1>
             <p className="text-xl text-text-muted">{post.excerpt || ''}</p>
             <div className="flex flex-wrap gap-2 mt-4">
               {(post.tags || post.keywords || []).map((tag) => (
